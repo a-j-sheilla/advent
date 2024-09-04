@@ -1,10 +1,27 @@
 package main
 
-import "strings"
+import (
+	"fmt"
+	"os"
+	"strings"
+)
 
 func main() {
-
+	file, err := os.ReadFile("stringFile.txt")
+	if err != nil {
+		fmt.Println("error reading file:",err)
+		return
+	}
+	checkString := strings.Split(string(file), "\n")
+	count := 0
+	for _, checkLine := range checkString{
+		if niceString(checkLine) {
+			count ++
+		}
+	}
+	fmt.Println("Nice strings are: ", count)
 }
+
 func niceString(str string) bool {
 	vowels := "aeiou"
 	countVow := 0
