@@ -28,7 +28,7 @@ func niceString(str string) bool {
 	doubleLetter := false
 	notAllowed := []string{"ab", "cd", "pq", "xy"}
 
-	for i := 0; i < +len(str)-1; i++ {
+	for i := 0; i <= len(str)-1; i++ {
 		if strings.ContainsRune(vowels, rune(str[i])) {
 			countVow++
 		}
