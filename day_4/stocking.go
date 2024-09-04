@@ -19,10 +19,14 @@ func main() {
         hashString := hex.EncodeToString(hash[:])
 		//fmt.Println(numString,secretKey,data,hash,hashString)
         
-        if hashString[:5] == "00000" {
-            fmt.Println("The lowest number to produce the hashstring:", i)
-            break
-        }
+        // if hashString[:5] == "00000" {
+        //     fmt.Println("The lowest number to produce the hashstring:", i)
+        //     break
+        // }
+		 if hashString[:6] == "000000" {
+			fmt.Println("Starting with 6 zeroes is: ", i)
+			
+		 }
 
         i++
     }
