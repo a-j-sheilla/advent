@@ -17,7 +17,7 @@ func main() {
         
         hash := md5.Sum([]byte(data))
         hashString := hex.EncodeToString(hash[:])
-		fmt.Println(numString,secretKey,data,hash,hashString)
+		//fmt.Println(numString,secretKey,data,hash,hashString)
         
         if hashString[:5] == "00000" {
             fmt.Println("The lowest number to produce the hashstring:", i)
