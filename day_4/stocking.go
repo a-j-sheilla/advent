@@ -1,43 +1,26 @@
 package main
 
 import (
-    "strconv"
+    "crypto/md5"
+    "encoding/hex"
     "fmt"
+    "strconv"
 )
-
-func simpleHash(s string) string {
-    var hash int
-    for _, char := range s {
-        hash = (hash + int(char)) % 100000
-    }
-
-    result := ""
-    for hash > 0 {
-        digit := hash % 16
-        if digit < 10 {
-            result = string(rune('0'+digit)) + result
-        } else {
-            result = string(rune('a'+digit-10)) + result
-        }
-        hash /= 16
-    }
-
-    for len(result) < 5 {
-        result = "0" + result
-    }
-    return result
-}
 
 func main() {
     secretKey := "yzbqklnj"
     i := 1
-
+// yzbqklnj1
     for {
-        data := secretKey + strconv.Itoa(i)
-        hash := simpleHash(data)
-
-        if hash[:5] == "00000" {
-            fmt.Println("The lowest number that produces a hash starting with five zeroes is:", i)
+		numString := strconv.Itoa(i)
+        data := secretKey + numString
+        
+        hash := md5.Sum([]byte(data))
+        hashString := hex.EncodeToString(hash[:])
+		fmt.Println(numString,secretKey,data,hash,hashString)
+        
+        if hashString[:5] == "00000" {
+            fmt.Println("The lowest number to produce the hashstring:", i)
             break
         }
 
