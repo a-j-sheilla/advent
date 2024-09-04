@@ -25,7 +25,8 @@ func main() {
         // }
 		 if hashString[:6] == "000000" {
 			fmt.Println("Starting with 6 zeroes is: ", i)
-			
+			break
+
 		 }
 
         i++
